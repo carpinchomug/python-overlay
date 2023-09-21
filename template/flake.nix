@@ -32,8 +32,6 @@
                 torch-geometric
               ]))
             ];
-
-            QT_PLUGIN_PATH = with pkgs.qt5; "${qtbase}/${qtbase.qtPluginPrefix}";
           };
         };
       };

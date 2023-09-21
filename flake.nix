@@ -15,15 +15,7 @@
         overlayAttrs = {
           python3 = pkgs.python3.override {
             packageOverrides = self: super:
-              builtins.mapAttrs (_: package: package) config.packages // {
-                # Fix matplotlib.
-                # https://github.com/NixOS/nixpkgs/issues/80147#issuecomment-784857897
-                # 
-                # In addition to applying this override, set QT_PLUGIN_PATH as
-                # QT_PLUGIN_PATH = with pkgs.qt5; "${qtbase}/${qtbase.qtPluginPrefix}";
-                # in your nix shell.
-                matplotlib = super.matplotlib.override { enableQt = true; };
-              };
+              builtins.mapAttrs (_: package: package) config.packages // { };
           };
         };
       };
