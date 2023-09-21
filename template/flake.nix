@@ -15,7 +15,7 @@
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
           overlays = [
-            inputs.python-overlay.default
+            inputs.python-overlay.overlays.default
           ];
           config = { };
         };
@@ -29,13 +29,13 @@
                 pandas
                 matplotlib
                 torch
-                torch_geometric
+                torch-geometric
               ]))
             ];
 
             QT_PLUGIN_PATH = with pkgs.qt5; "${qtbase}/${qtbase.qtPluginPrefix}";
           };
-        }
+        };
       };
     };
 }
