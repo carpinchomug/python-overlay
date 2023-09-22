@@ -1,6 +1,6 @@
 { lib
 , buildPythonPackage
-, fetchFromGitHub
+, fetchPypi
 , setuptools
 , tqdm
 , numpy
@@ -12,16 +12,18 @@
 , psutil
 }:
 
-buildPythonPackage {
-  pname = "torch-geometric";
+let
   version = "2.3.1";
+in
+buildPythonPackage {
+  inherit version;
+  pname = "torch-geometric";
   format = "pyproject";
 
-  src = fetchFromGitHub {
-    owner = "pyg-team";
-    repo = "pytorch_geometric";
-    rev = "ff9fb3d7cdbaa2f2b8a848fb6cc5f4c3f465118c";
-    sha256 = "sha256-69I54tVnPLz0GSpvgFxhiUkvrUqutRxfBi1TULjfqgw=";
+  src = fetchPypi {
+    inherit version;
+    pname = "torch_geometric";
+    sha256 = "sha256-RU/Qu8EooXpLnRUBC6n2bUjsjNcneZG4iKd3AmP6El0=";
   };
 
   nativeBuildInputs = [
