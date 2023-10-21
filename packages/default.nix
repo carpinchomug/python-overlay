@@ -6,6 +6,7 @@
     {
       packages = {
         category-encoders = callPackage ./category-encoders.nix { };
+        rustworkx = callPackage ./rustworkx.nix { };
         torch-geometric = callPackage ./torch-geometric.nix { };
       };
     };
