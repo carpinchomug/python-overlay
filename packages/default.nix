@@ -1,12 +1,12 @@
 {
   perSystem = { pkgs, ... }:
     let
-      callPythonPackage = import ../helper.nix pkgs;
+      inherit (pkgs.python3Packages) callPackage;
     in
     {
       packages = {
-        category-encoders = callPythonPackage ./category-encoders.nix { };
-        torch-geometric = callPythonPackage ./torch-geometric.nix { };
+        category-encoders = callPackage ./category-encoders.nix { };
+        torch-geometric = callPackage ./torch-geometric.nix { };
       };
     };
 }
